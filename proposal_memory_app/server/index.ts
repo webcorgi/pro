@@ -10,6 +10,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { testConnection } from '../src/lib/db/connection';
 import mediaRoutes from './routes/media';
+import letterRoutes from './routes/letters';
 
 // 환경 변수 로드
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
@@ -78,6 +79,7 @@ app.get('/health', async (req: Request, res: Response) => {
 
 // API 라우트
 app.use('/api/media', mediaRoutes);
+app.use('/api/letters', letterRoutes);
 
 // API 정보
 app.get('/api', (req: Request, res: Response) => {
