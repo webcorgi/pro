@@ -15,7 +15,8 @@
     "test:unit": "jest --testPathPattern=__tests__/unit",
     "test:integration": "jest --testPathPattern=__tests__/integration",
     "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
+    "test:e2e:ui": "playwright test --ui",
+    "test:db": "ts-node scripts/test-db-connection.ts"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.21",
