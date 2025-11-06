@@ -157,6 +157,37 @@ router.get(
 );
 
 /**
+ * GET /api/letters/stats
+ * 편지 통계 조회
+ */
+router.get(
+  '/stats',
+  asyncHandler(async (req: Request, res: Response) => {
+    // 총 편지 수, 임시 저장 수, 발행된 편지 수
+    const statsSql = `
+      SELECT
+        COUNT(*) as total,
+        SUM(CASE WHEN is_draft = TRUE THEN 1 ELSE 0 END) as drafts,
+        SUM(CASE WHEN is_draft = FALSE THEN 1 ELSE 0 END) as published,
+        SUM(LENGTH(content) - LENGTH(REPLACE(content, ' ', '')) + 1) as totalWords
+      FROM letters
+    `;
+
+    const [stats] = await query<RowDataPacket[]>(statsSql);
+
+    res.json({
+      success: true,
+      data: {
+        totalLetters: stats.total || 0,
+        draftLetters: stats.drafts || 0,
+        publishedLetters: stats.published || 0,
+        totalWords: stats.totalWords || 0,
+      },
+    });
+  })
+);
+
+/**
  * GET /api/letters/:id
  * 특정 편지 조회
  */
@@ -295,37 +326,6 @@ router.delete(
     res.json({
       success: true,
       message: '편지가 삭제되었습니다.',
-    });
-  })
-);
-
-/**
- * GET /api/letters/stats
- * 편지 통계 조회
- */
-router.get(
-  '/stats',
-  asyncHandler(async (req: Request, res: Response) => {
-    // 총 편지 수, 임시 저장 수, 발행된 편지 수
-    const statsSql = `
-      SELECT
-        COUNT(*) as total,
-        SUM(CASE WHEN is_draft = TRUE THEN 1 ELSE 0 END) as drafts,
-        SUM(CASE WHEN is_draft = FALSE THEN 1 ELSE 0 END) as published,
-        SUM(LENGTH(content) - LENGTH(REPLACE(content, ' ', '')) + 1) as totalWords
-      FROM letters
-    `;
-
-    const [stats] = await query<RowDataPacket[]>(statsSql);
-
-    res.json({
-      success: true,
-      data: {
-        totalLetters: stats.total || 0,
-        draftLetters: stats.drafts || 0,
-        publishedLetters: stats.published || 0,
-        totalWords: stats.totalWords || 0,
-      },
     });
   })
 );
