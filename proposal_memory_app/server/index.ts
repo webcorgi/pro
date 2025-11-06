@@ -9,6 +9,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import { testConnection } from '../src/lib/db/connection';
+import mediaRoutes from './routes/media';
 
 // 환경 변수 로드
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
@@ -32,6 +33,9 @@ app.use(cors(corsOptions));
 // Body parser
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// 정적 파일 제공 (업로드된 파일)
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 // 요청 로깅 미들웨어
 app.use((req: Request, res: Response, next: NextFunction) => {
@@ -72,7 +76,10 @@ app.get('/health', async (req: Request, res: Response) => {
   }
 });
 
-// API 라우트 (추후 추가)
+// API 라우트
+app.use('/api/media', mediaRoutes);
+
+// API 정보
 app.get('/api', (req: Request, res: Response) => {
   res.json({
     message: 'Proposal Memory App API',
