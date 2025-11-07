@@ -1,0 +1,78 @@
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+  z-index: 100;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 60px;
+  padding: 0 0.5rem;
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  color: #757575;
+  transition: color 0.2s;
+  text-decoration: none;
+  cursor: pointer;
+  gap: 0.25rem;
+}
+
+.navItem:hover {
+  color: #ff6b9d;
+}
+
+.navItem.active {
+  color: #ff6b9d;
+  font-weight: 600;
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}
+
+.label {
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .container {
+    height: 56px;
+  }
+
+  .iconContainer {
+    width: 24px;
+    height: 24px;
+  }
+
+  .label {
+    font-size: 0.7rem;
+  }
+}
+
+/* PWA 설치 시 하단 safe area 대응 */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .container {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
