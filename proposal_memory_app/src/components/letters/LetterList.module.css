@@ -1,0 +1,143 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.newButton {
+  padding: 8px 16px;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.newButton:hover {
+  background-color: #333333;
+}
+
+.emptyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  gap: 16px;
+}
+
+.emptyIcon {
+  font-size: 64px;
+}
+
+.emptyText {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+}
+
+.emptySubText {
+  font-size: 14px;
+  color: #666666;
+  margin: 0;
+}
+
+.emptyButton {
+  margin-top: 16px;
+  padding: 12px 24px;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.emptyButton:hover {
+  background-color: #333333;
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.letterItem {
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.letterItem:hover {
+  background-color: #f9f9f9;
+}
+
+.letterItem:active {
+  background-color: #f0f0f0;
+}
+
+.letterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.letterTitle {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.letterDate {
+  font-size: 12px;
+  color: #999999;
+  white-space: nowrap;
+}
+
+.letterPreview {
+  font-size: 14px;
+  color: #666666;
+  margin: 0;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

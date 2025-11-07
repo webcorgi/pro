@@ -1,0 +1,110 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.header {
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.titleInput {
+  width: 100%;
+  font-size: 24px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  padding: 8px 0;
+  background-color: transparent;
+}
+
+.titleInput::placeholder {
+  color: #999999;
+}
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  min-height: 24px;
+}
+
+.savingIndicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #666666;
+}
+
+.savedIndicator {
+  font-size: 12px;
+  color: #4caf50;
+}
+
+.contentTextarea {
+  flex: 1;
+  padding: 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: inherit;
+}
+
+.contentTextarea::placeholder {
+  color: #999999;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border-top: 1px solid #e0e0e0;
+  justify-content: flex-end;
+}
+
+.cancelButton,
+.saveButton {
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.cancelButton {
+  background-color: #f5f5f5;
+  color: #000000;
+}
+
+.cancelButton:hover {
+  background-color: #e0e0e0;
+}
+
+.saveButton {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.saveButton:hover:not(:disabled) {
+  background-color: #333333;
+}
+
+.saveButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
