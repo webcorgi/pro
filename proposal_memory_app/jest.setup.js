@@ -1,6 +1,14 @@
 // Learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 
+// Mock uuid module globally
+jest.mock('uuid');
+
+// Polyfill for TextEncoder/TextDecoder (needed for supertest)
+const { TextEncoder, TextDecoder } = require('util');
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
+
 // Polyfill for structuredClone (needed for fake-indexeddb)
 if (typeof global.structuredClone === 'undefined') {
   global.structuredClone = (obj) => {

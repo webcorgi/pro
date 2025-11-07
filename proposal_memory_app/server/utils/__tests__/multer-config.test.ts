@@ -3,6 +3,11 @@
  * 파일 업로드 설정 단위 테스트
  */
 
+// Mock uuid module
+jest.mock('uuid', () => ({
+  v4: () => 'test-uuid-123',
+}));
+
 import { validateFileType, validateFileSize, getUploadDir, getThumbnailDir } from '../multer-config';
 import path from 'path';
 
